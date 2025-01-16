@@ -1,0 +1,18 @@
+spring:
+ application:
+  name: eureka-server
+
+# this is the standard port for a Eureka server
+# use it unless directed otherwise
+server:
+ port: 8761
+
+# this configuration is required to get the Eureka server running correctly
+# we don't want our Eureka server to register with itself or grab the registry at startup
+# the last one provides a default URL for services to hit unless they specify otherwise
+eureka:
+ client:
+  register-with-eureka: false
+  fetch-registry: false
+  service-url:
+   defaultZone: http://localhost:8761/eureka
