@@ -5,10 +5,10 @@ spring:
  cloud:
   gateway:
    routes:
-   - id: restaurant-service-route
-     uri: lb://restaurant-service
+   - id: personnel-service-route
+     uri: lb://personnel-service
      predicates:
-     - Path=/restaurant/**
+     - Path=/personnel/**
    - id: menu-service-route
      uri: lb://menu-service
      predicates:
