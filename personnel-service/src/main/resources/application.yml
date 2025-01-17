@@ -1,6 +1,17 @@
 spring:
  application:
   name: personnel-service
+ datasource:
+   url: jdbc:mysql://localhost:3306/fleet
+   username: root
+   password: 123456Ui
+   driver-class-name: com.mysql.cj.jdbc.Driver
+ jpa:
+  hibernate:
+   ddl-auto: none
+   naming:
+    implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 
 server:
