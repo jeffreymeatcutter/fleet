@@ -9,10 +9,10 @@ spring:
      uri: lb://ship-service
      predicates:
      - Path=/fleet/**
-   - id: menu-service-route
-     uri: lb://menu-service
+   - id: personnel-service-route
+     uri: lb://personnel-service
      predicates:
-     - Path=/menu/**
+     - Path=/personnel/**
 
 server:
  port: 9000
