@@ -5,14 +5,14 @@ spring:
  cloud:
   gateway:
    routes:
+   - id: ship-service-route
+     uri: lb://ship-service
+     predicates:
+     - Path=/fleet/**
    - id: personnel-service-route
      uri: lb://personnel-service
      predicates:
      - Path=/personnel/**
-   - id: menu-service-route
-     uri: lb://menu-service
-     predicates:
-     - Path=/menu/**
 
 server:
  port: 9000
