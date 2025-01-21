@@ -3,8 +3,8 @@ spring:
   name: squadron-service
  datasource:
   url: jdbc:mysql://localhost:3306/fleet
-  username: root
-  password: js1289ARTY3137!
+  username: pangolin
+  password: pangolin123!
   driver-class-name: com.mysql.cj.jdbc.Driver
  jpa:
   hibernate:
