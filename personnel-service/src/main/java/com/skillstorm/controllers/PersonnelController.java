@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.skillstorm.dtos.PersonnelDTO;
+import com.skillstorm.feignClients.SquadronFeignClient;
 import com.skillstorm.models.Personnel;
 import com.skillstorm.services.PersonnelService;
 
@@ -21,6 +22,7 @@ import com.skillstorm.services.PersonnelService;
 public class PersonnelController {
 	
 	private PersonnelService service;
+	
 	
 	public PersonnelController(PersonnelService service) {
 		this.service = service;
@@ -36,6 +38,11 @@ public class PersonnelController {
 		return service.findById(personnelId);
 	}
 	
+	@GetMapping("/squadron/{squadId}")
+	public ResponseEntity<Iterable<Personnel>> getAllInSquad(@PathVariable int squadId){
+		return service.getAllInSquad(squadId);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Personnel> addOne(@RequestBody PersonnelDTO personnelDTO){
 		return service.updateOrCreate(-1, personnelDTO);
@@ -47,7 +54,8 @@ public class PersonnelController {
 	}
 
 	@DeleteMapping("/{personnelId}")
-	public ResponseEntity<Void> deletOne(@PathVariable int personnelId){
+	public ResponseEntity<Void> deleteOne(@PathVariable int personnelId){
 		return service.deleteOne(personnelId);
 	}
+	
 }

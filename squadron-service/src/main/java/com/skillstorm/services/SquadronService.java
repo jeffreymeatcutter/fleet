@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
+import com.skillstorm.feignClients.PersonnelClient;
+import com.skillstorm.models.Personnel;
 import com.skillstorm.FeignClient.ShipFeignClient;
 import com.skillstorm.dtos.SquadronDTO;
 import com.skillstorm.models.Ship;
@@ -14,10 +17,12 @@ import com.skillstorm.repositories.SquadronRepository;
 @Service
 public class SquadronService {
 	private SquadronRepository repo;
+	private PersonnelClient personnelClient;
 	private ShipFeignClient shipFeignClient;
 	
-	public SquadronService(ShipFeignClient shipFeignClient, SquadronRepository repo) {
+	public SquadronService(ShipFeignClient shipFeignClient, PersonnelClient personnelClient, SquadronRepository repo) {
         this.shipFeignClient = shipFeignClient;
+    		this.personnelClient = personnelClient;
         this.repo = repo;
     }
   
@@ -45,15 +50,42 @@ public class SquadronService {
 	}
 	
 	public ResponseEntity<Squadron> update(int id, SquadronDTO squadronDTO){
-		if(repo.existsById(id))
+		
+		if(repo.existsById(id)) {
+			
+			Squadron squadron = repo.findById(id).get();
+			
+			if(squadron.getMaxCapacity() != squadronDTO.getMaxCapacity()) {
+				
+				Personnel[] people = personnelClient.getPersonnel(id);
+				
+				if(squadronDTO.getMaxCapacity()< people.length) {
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+				}
+			}
+			
+			
 			return ResponseEntity.status(HttpStatus.OK)
 								 .body(repo.save(new Squadron(id, squadronDTO.getSquadronName(), squadronDTO.getMaxCapacity())));
+		}
 		else
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 								 .body(null);
 	}
 	
 	public ResponseEntity<Void> delete (int id) {
+		
+		//Deleting the personnel in the Squad by getting all and then changing the id to 1 (aka unassigned) one at a time
+		Personnel[] people = personnelClient.getPersonnel(id);
+		
+        	for (Personnel person : people) {
+        		person.setSquadronId(1);
+        		personnelClient.changePersonnel(person, person.getPersonnelId());
+        	}
+        
+        //Deleting the ships in the Squad
+        	
+        
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT)
 				             .body(null);

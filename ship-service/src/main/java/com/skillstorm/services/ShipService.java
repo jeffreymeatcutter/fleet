@@ -1,8 +1,12 @@
 package com.skillstorm.services;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.skillstorm.FeignClient.SquadronFeignClient;
 import com.skillstorm.dtos.ShipDTO;
@@ -13,6 +17,7 @@ import com.skillstorm.repositories.ShipRepository;
 public class ShipService {
 
     private final ShipRepository repo; 
+
 
     public ShipService(ShipRepository repo) {
         this.repo = repo; 
@@ -57,7 +62,7 @@ public class ShipService {
     }
 
     // Delete
-    public ResponseEntity<Void> delete(int shipId) { 
+    public ResponseEntity<Void> delete(int shipId) {
         repo.deleteById(shipId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT)
 	             .body(null);
