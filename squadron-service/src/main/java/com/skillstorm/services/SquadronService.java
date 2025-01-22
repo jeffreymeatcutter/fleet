@@ -14,7 +14,7 @@ import com.skillstorm.repositories.SquadronRepository;
 @Service
 public class SquadronService {
 	private SquadronRepository repo;
-	private final ShipFeignClient shipFeignClient;
+	private ShipFeignClient shipFeignClient;
 	
 	public SquadronService(ShipFeignClient shipFeignClient, SquadronRepository repo) {
         this.shipFeignClient = shipFeignClient;

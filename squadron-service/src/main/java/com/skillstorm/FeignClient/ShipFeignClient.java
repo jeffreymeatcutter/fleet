@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.skillstorm.models.Ship;
 
-@FeignClient (name = "ship-service") 
+@FeignClient(name = "ship-service") 
 public interface ShipFeignClient {
 
     @GetMapping ("/ships/squadron/{squadronId}")
