@@ -14,5 +14,5 @@ public interface PersonnelClient {
 	public Personnel[] getPersonnel(@PathVariable int id);
 	
 	@PutMapping("personnel/id")
-	public Personnel changePersonnel(@PathVariable int id, @RequestBody Personnel personnel);
+	public Personnel changePersonnel(@RequestBody Personnel personnel, @PathVariable int id);
 }

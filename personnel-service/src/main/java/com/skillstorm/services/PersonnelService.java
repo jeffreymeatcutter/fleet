@@ -3,7 +3,6 @@ package com.skillstorm.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 
 
 import org.springframework.http.HttpStatus;
@@ -26,6 +25,7 @@ public class PersonnelService {
 	
 
 	public PersonnelService(SquadronFeignClient squadClient, PersonnelRepository repo) {
+		super();
 		this.squadClient = squadClient;
 		this.repo = repo;
 	}
@@ -51,8 +51,7 @@ public class PersonnelService {
 	public ResponseEntity<Personnel> updateOrCreate(int personnelId, PersonnelDTO personnelDTO){
 
 		//checks if the person is changing squads, and if so checking squad limits
-		Optional<Personnel> personOptional = repo.findById(personnelId);
-		Personnel person = personOptional.get();
+		Personnel person = repo.findById(personnelId).get();
 		
 		if(person.getSquadronId() != personnelDTO.getSquadronId()) {
 			
@@ -65,8 +64,6 @@ public class PersonnelService {
 	        
 	        //if the squad is already full (or over full) it rejects the request
 	        if(squad.getMaxCapacity()<= people.size()) {
-	    
-	        	
 	        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 	        }
 		}

@@ -1,12 +1,9 @@
 package com.skillstorm.services;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
 
 import com.skillstorm.dtos.SquadronDTO;
 import com.skillstorm.feignClients.PersonnelClient;
@@ -46,9 +43,24 @@ public class SquadronService {
 	}
 	
 	public ResponseEntity<Squadron> update(int id, SquadronDTO squadronDTO){
-		if(repo.existsById(id))
+		
+		if(repo.existsById(id)) {
+			
+			Squadron squadron = repo.findById(id).get();
+			
+			if(squadron.getMaxCapacity() != squadronDTO.getMaxCapacity()) {
+				
+				Personnel[] people = personnelClient.getPersonnel(id);
+				
+				if(squadronDTO.getMaxCapacity()< people.length) {
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+				}
+			}
+			
+			
 			return ResponseEntity.status(HttpStatus.OK)
 								 .body(repo.save(new Squadron(id, squadronDTO.getSquadronName(), squadronDTO.getMaxCapacity())));
+		}
 		else
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 								 .body(null);
@@ -61,10 +73,11 @@ public class SquadronService {
 		
         	for (Personnel person : people) {
         		person.setSquadronId(1);
-        		personnelClient.changePersonnel(person.getPersonnelId(), person);
+        		personnelClient.changePersonnel(person, person.getPersonnelId());
         	}
         
         //Deleting the ships in the Squad
+        	
         
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT)
