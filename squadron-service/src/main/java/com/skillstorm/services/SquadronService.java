@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.skillstorm.dtos.SquadronDTO;
+import com.skillstorm.feignClients.PersonnelClient;
 import com.skillstorm.models.Personnel;
 import com.skillstorm.models.Ship;
 import com.skillstorm.models.Squadron;
@@ -18,10 +19,12 @@ import com.skillstorm.repositories.SquadronRepository;
 @Service
 public class SquadronService {
 	private SquadronRepository repo;
+	private PersonnelClient personnelClient;
 
-	public SquadronService(SquadronRepository repo) {
+	public SquadronService(SquadronRepository repo, PersonnelClient personnelClient) {
 		super();
 		this.repo = repo;
+		this.personnelClient = personnelClient;
 	}
 	
 	public ResponseEntity<Iterable<Squadron>> findAll() {
@@ -53,32 +56,15 @@ public class SquadronService {
 	
 	public ResponseEntity<Void> delete (int id) {
 		
-		//Deleting the personnel in the Squad
+		//Deleting the personnel in the Squad by getting all and then changing the id to 1 (aka unassigned) one at a time
+		Personnel[] people = personnelClient.getPersonnel(id);
 		
-		RestTemplate rt = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<Object> entity = new HttpEntity<>(headers);
-        ResponseEntity<Personnel[]> responseEntity = rt.exchange("http://localhost:8082/personnel/squadron/" + id, HttpMethod.GET, entity, Personnel[].class);
-        if(responseEntity.getStatusCode().is2xxSuccessful()) {
-        	Personnel[] personnelList = responseEntity.getBody();
-        	for (Personnel person : personnelList) {
+        	for (Personnel person : people) {
         		person.setSquadronId(1);
-        		
-        		rt.exchange("http://localhost:8082/personnel/" + person.getPersonnelId(), HttpMethod.PUT, new HttpEntity<>(person, headers), Personnel.class);
+        		personnelClient.changePersonnel(person.getPersonnelId(), person);
         	}
-        }
         
         //Deleting the ships in the Squad
-        
-        ResponseEntity<Ship[]> shipResponseEntity = rt.exchange("http://localhost:8082/ship/squadron/" + id, HttpMethod.GET, entity, Ship[].class);
-        if(shipResponseEntity.getStatusCode().is2xxSuccessful()) {
-        	Ship[] shipList = shipResponseEntity.getBody();
-        	for(Ship ship : shipList) {
-        		ship.setSquadronId(1);
-        		
-        		rt.exchange("http://localhost:8082/ship/" + ship.getShipId(), HttpMethod.PUT, new HttpEntity<>(ship, headers), Ship.class);
-        	}
-        }
         
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT)

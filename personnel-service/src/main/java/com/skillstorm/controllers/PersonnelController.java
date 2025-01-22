@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.skillstorm.dtos.PersonnelDTO;
+import com.skillstorm.feignClients.SquadronFeignClient;
 import com.skillstorm.models.Personnel;
 import com.skillstorm.services.PersonnelService;
 
@@ -21,6 +22,7 @@ import com.skillstorm.services.PersonnelService;
 public class PersonnelController {
 	
 	private PersonnelService service;
+	
 	
 	public PersonnelController(PersonnelService service) {
 		this.service = service;

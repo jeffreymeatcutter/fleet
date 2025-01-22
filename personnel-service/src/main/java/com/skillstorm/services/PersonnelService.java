@@ -1,20 +1,18 @@
 package com.skillstorm.services;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
-import org.hibernate.engine.spi.SelfDirtinessTracker;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
 
 import com.skillstorm.dtos.PersonnelDTO;
+import com.skillstorm.feignClients.SquadronFeignClient;
 import com.skillstorm.models.Personnel;
 import com.skillstorm.models.Squadron;
 import com.skillstorm.repositories.PersonnelRepository;
@@ -23,8 +21,12 @@ import com.skillstorm.repositories.PersonnelRepository;
 public class PersonnelService {
 	
 	private PersonnelRepository repo;
+	
+	private SquadronFeignClient squadClient;
+	
 
-	public PersonnelService(PersonnelRepository repo) {
+	public PersonnelService(SquadronFeignClient squadClient, PersonnelRepository repo) {
+		this.squadClient = squadClient;
 		this.repo = repo;
 	}
 	
@@ -55,11 +57,7 @@ public class PersonnelService {
 		if(person.getSquadronId() != personnelDTO.getSquadronId()) {
 			
 			//Setting up to contact squadron to get maxCapacity
-			RestTemplate rt = new RestTemplate();
-	        HttpHeaders headers = new HttpHeaders();
-	        HttpEntity<Object> entity = new HttpEntity<>(headers);
-	        ResponseEntity<Squadron> responseEntity = rt.exchange("http://localhost:8667/squadron/" + personnelDTO.getSquadronId(), HttpMethod.GET, entity, Squadron.class);
-	        Squadron squad = responseEntity.getBody();
+			Squadron squad = squadClient.getSquadron(personnelDTO.getSquadronId());
 	        
 	        // there's probably a less sketchy way to do this... but I need the amount of people in the squad so...
 	        ResponseEntity<Iterable<Personnel>> peeps = this.getAllInSquad(squad.getSquadronId());
@@ -69,7 +67,7 @@ public class PersonnelService {
 	        if(squad.getMaxCapacity()<= people.size()) {
 	    
 	        	
-	        	return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
+	        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 	        }
 		}
 		
