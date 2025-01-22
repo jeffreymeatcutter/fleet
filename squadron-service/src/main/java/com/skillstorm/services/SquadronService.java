@@ -4,7 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.skillstorm.FeignClient.ShipFeignClient;
 import com.skillstorm.dtos.SquadronDTO;
+import com.skillstorm.models.Ship;
 import com.skillstorm.models.Squadron;
 import com.skillstorm.repositories.SquadronRepository;
 
@@ -12,11 +14,17 @@ import com.skillstorm.repositories.SquadronRepository;
 @Service
 public class SquadronService {
 	private SquadronRepository repo;
-
-	public SquadronService(SquadronRepository repo) {
-		super();
-		this.repo = repo;
-	}
+	private ShipFeignClient shipFeignClient;
+	
+	public SquadronService(ShipFeignClient shipFeignClient, SquadronRepository repo) {
+        this.shipFeignClient = shipFeignClient;
+        this.repo = repo;
+    }
+  
+	//Get ships by squadId
+	  public Iterable <Ship> getShipsBySquadron(int squadronId) {
+	        return shipFeignClient.getShipsBySquadron(squadronId);
+	    }
 	
 	public ResponseEntity<Iterable<Squadron>> findAll() {
 		return ResponseEntity.status(HttpStatus.OK)

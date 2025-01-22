@@ -11,18 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.dtos.SquadronDTO;
+import com.skillstorm.models.Ship;
 import com.skillstorm.models.Squadron;
 import com.skillstorm.services.SquadronService;
 
 @RestController
 @RequestMapping("/squadron")
 public class SquadronController {
-	private SquadronService service;
+	private SquadronService service; 
 
 	public SquadronController(SquadronService service) {
 		super();
 		this.service = service;
 	}
+	
+    @GetMapping("/ships/{squadronId}")
+    public ResponseEntity<Iterable<Ship>> getShipsBySquadron(@PathVariable int squadronId) {
+    	Iterable<Ship> ships = service.getShipsBySquadron(squadronId);
+        return ResponseEntity.ok(ships);
+    }
 	
 	@GetMapping
 	public ResponseEntity<Iterable<Squadron>> findAll() {
