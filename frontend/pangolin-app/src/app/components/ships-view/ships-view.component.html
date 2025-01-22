@@ -1,0 +1,9 @@
+<div
+      id="card"
+      *ngFor="let ship of ships; trackBy: trackByShipId"
+    >
+      <app-ships
+        *ngIf="ships"
+        [ship]="ship"
+      ></app-ships>
+    </div>
