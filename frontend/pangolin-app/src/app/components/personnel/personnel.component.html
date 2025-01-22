@@ -1,0 +1,10 @@
+@if (person) {
+    <mat-card>
+        <mat-card-content>
+            <h3>Id: {{person.personnelId}}</h3>
+            <h3>Personnel Name: {{person.personnelName}}</h3>
+            <h3>Squadron Name: {{squadName}}</h3>
+            <h3>Role: {{person.commander === true ? 'Commander' : 'Pilot'}}</h3>
+        </mat-card-content>
+    </mat-card>
+}

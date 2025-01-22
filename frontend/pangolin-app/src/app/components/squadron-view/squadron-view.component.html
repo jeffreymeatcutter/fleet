@@ -1,0 +1,9 @@
+<div
+      id="card"
+      *ngFor="let squadron of squadrons; trackBy: trackBySquadronId"
+    >
+      <app-squadron
+        *ngIf="squadrons"
+        [squadron]="squadron"
+      ></app-squadron>
+    </div>

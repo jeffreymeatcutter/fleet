@@ -1,4 +1,6 @@
 spring:
+ main:
+  web-application-type: reactive
  application:
   name: gateway
  cloud:
@@ -16,7 +18,6 @@ spring:
      uri: lb://squadron-service
      predicates:
      - Path=/squadron/**
-
 server:
  port: 8667
 
