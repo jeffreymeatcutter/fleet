@@ -36,6 +36,11 @@ public class PersonnelController {
 		return service.findById(personnelId);
 	}
 	
+	@GetMapping("/squadron/{squadId}")
+	public ResponseEntity<Iterable<Personnel>> getAllInSquad(@PathVariable int squadId){
+		return service.getAllInSquad(squadId);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Personnel> addOne(@RequestBody PersonnelDTO personnelDTO){
 		return service.updateOrCreate(-1, personnelDTO);
@@ -47,7 +52,8 @@ public class PersonnelController {
 	}
 
 	@DeleteMapping("/{personnelId}")
-	public ResponseEntity<Void> deletOne(@PathVariable int personnelId){
+	public ResponseEntity<Void> deleteOne(@PathVariable int personnelId){
 		return service.deleteOne(personnelId);
 	}
+	
 }
