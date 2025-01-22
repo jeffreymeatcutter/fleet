@@ -7,6 +7,8 @@ import com.skillstorm.dtos.ShipDTO;
 import com.skillstorm.models.Ship;
 import com.skillstorm.services.ShipService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -17,6 +19,13 @@ public class ShipController {
 
     public ShipController(ShipService service) {
         this.service = service;
+    }
+    
+    //find ships by squadId
+    @GetMapping("/squadron/{squadronId}")
+    public ResponseEntity<Iterable<Ship>> getShipsBySquadron(@PathVariable int squadronId) {
+    	Iterable<Ship> ships = service.findBySquadronId(squadronId); 
+        return ResponseEntity.ok(ships); 
     }
 
     // Find all 
@@ -33,13 +42,13 @@ public class ShipController {
 
     // Create
     @PostMapping
-    public ResponseEntity<Ship> create(@RequestBody ShipDTO shipDTO) {
+    public ResponseEntity<Ship> create(@Valid @RequestBody ShipDTO shipDTO) {
         return service.create(shipDTO);
     }
 
     // Update
     @PutMapping("/{shipId}")
-    public ResponseEntity<Ship> update(@PathVariable int shipId, @RequestBody ShipDTO shipDTO) {
+    public ResponseEntity<Ship> update(@PathVariable int shipId, @Valid @RequestBody ShipDTO shipDTO) {
         return service.update(shipId, shipDTO);
     }
 

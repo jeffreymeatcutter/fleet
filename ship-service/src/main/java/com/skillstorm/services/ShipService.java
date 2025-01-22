@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.skillstorm.FeignClient.SquadronFeignClient;
 import com.skillstorm.dtos.ShipDTO;
 import com.skillstorm.models.Ship;
 import com.skillstorm.repositories.ShipRepository;
@@ -15,13 +16,18 @@ import com.skillstorm.repositories.ShipRepository;
 @Service
 public class ShipService {
 
-    private final ShipRepository repo;
+    private final ShipRepository repo; 
 
 
     public ShipService(ShipRepository repo) {
-        this.repo = repo;
+        this.repo = repo; 
     }
 
+    //get ships by squadron
+    public Iterable<Ship> findBySquadronId(int squadronId) {
+        return repo.findBySquadronId(squadronId);
+    }
+    
     // Find all 
     public ResponseEntity<Iterable<Ship>> findAll() { 
         return ResponseEntity.status(HttpStatus.OK)
@@ -46,10 +52,11 @@ public class ShipService {
 
     // Update
     public ResponseEntity<Ship> update(int shipId, ShipDTO shipDTO) {
-    	if(repo.existsById(shipId))
-			return ResponseEntity.status(HttpStatus.OK)
-								 .body(repo.save(new Ship(0, shipDTO.getShipName(), shipDTO.getShipType(), shipDTO.getSquadronId())));
-		else
+    	if(repo.existsById(shipId)) {
+    		Ship updatedShip = new Ship(shipId, shipDTO.getShipName(), shipDTO.getShipType(), shipDTO.getSquadronId());
+        	return ResponseEntity.status(HttpStatus.OK) 
+        						 .body(repo.save(updatedShip));
+    	}else
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 								 .body(null);
     }

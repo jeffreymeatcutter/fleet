@@ -1,0 +1,9 @@
+<div
+      id="card"
+      *ngFor="let person of personnel; trackBy: trackByPersonId"
+    >
+      <app-personnel
+        *ngIf="personnel"
+        [person]="person"
+      ></app-personnel>
+    </div>
