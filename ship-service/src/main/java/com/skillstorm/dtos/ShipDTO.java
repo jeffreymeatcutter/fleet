@@ -1,10 +1,16 @@
 package com.skillstorm.dtos;
- 
+
+import jakarta.validation.constraints.Pattern;
+
+
 
 public class ShipDTO {
 
-    private String shipName;
-    private String shipType;  
+    private String shipName; 
+    
+    @Pattern (regexp = "battleship|carrier|destroyer|submarine", message = "Invalid ship type")
+    private String shipType;
+    
     private int squadronId;
 
     public ShipDTO() {}
