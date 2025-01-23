@@ -9,8 +9,8 @@ import com.skillstorm.feignClients.PersonnelClient;
 import com.skillstorm.models.Personnel;
 import com.skillstorm.FeignClient.ShipFeignClient;
 import com.skillstorm.dtos.SquadronDTO;
-import com.skillstorm.models.Ship;
 import com.skillstorm.models.Squadron;
+import com.skillstorm.models.entities.Ship;
 import com.skillstorm.repositories.SquadronRepository;
 
 
