@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.dtos.SquadronDTO;
-import com.skillstorm.models.Ship;
 import com.skillstorm.models.Squadron;
+import com.skillstorm.models.entities.Ship;
 import com.skillstorm.services.SquadronService;
 
 @RestController

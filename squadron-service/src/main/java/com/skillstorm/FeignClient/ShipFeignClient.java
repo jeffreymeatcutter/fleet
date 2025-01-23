@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.skillstorm.models.Ship;
+import com.skillstorm.models.entities.Ship;
 
 @FeignClient(name = "ship-service") 
 public interface ShipFeignClient {
