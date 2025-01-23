@@ -13,6 +13,6 @@ public interface PersonnelClient {
 	@GetMapping("personnel/squadron/{id}")
 	public Personnel[] getPersonnel(@PathVariable int id);
 	
-	@PutMapping("personnel/id")
-	public Personnel changePersonnel(@RequestBody Personnel personnel, @PathVariable int id);
+	@PutMapping("personnel/{id}")
+	public Personnel changePersonnel( @PathVariable int id, @RequestBody Personnel personnel);
 }

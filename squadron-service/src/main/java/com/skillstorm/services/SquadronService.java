@@ -80,18 +80,18 @@ public class SquadronService {
 		
         	for (Personnel person : people) {
         		person.setSquadronId(1);
-        		personnelClient.changePersonnel(person, person.getPersonnelId());
+        		personnelClient.changePersonnel(person.getPersonnelId(), person);
         	}
         
         //Deleting the ships in the Squad
-        Iterable<Ship> ships = shipFeignClient.getShipsBySquadron(id);
-            
-        for(Ship ship : ships) {
-            ship.setSquadronId(1);
-            	
-            	
-            	
-         }
+		
+		Iterable<Ship> ships = shipFeignClient.getShipsBySquadron(id);
+		  
+		for(Ship ship : ships) { 
+			ship.setSquadronId(1);
+			shipFeignClient.update(ship.getShipId(), ship); 
+			}
+		 
         
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT)
