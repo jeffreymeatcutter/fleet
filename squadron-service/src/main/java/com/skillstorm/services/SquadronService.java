@@ -59,7 +59,7 @@ public class SquadronService {
 				
 				Personnel[] people = personnelClient.getPersonnel(id);
 				
-				if(squadronDTO.getMaxCapacity()< people.length) {
+				if(squadronDTO.getMaxCapacity()< people.length || squadronDTO.getMaxCapacity()<0) {
 					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 				}
 			}
@@ -84,7 +84,14 @@ public class SquadronService {
         	}
         
         //Deleting the ships in the Squad
-        	
+        Iterable<Ship> ships = shipFeignClient.getShipsBySquadron(id);
+            
+        for(Ship ship : ships) {
+            ship.setSquadronId(1);
+            	
+            	
+            	
+         }
         
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT)
