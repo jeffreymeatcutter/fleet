@@ -18,6 +18,9 @@ export class SquadronViewComponent {
 
   ngOnInit() {
     //Populate squadrons on init
+    this.loadSquadrons();
+  }
+  loadSquadrons(): void {
     this.squadronService.findAll().subscribe((data) => {
       this.squadrons = data;
     });
@@ -25,5 +28,9 @@ export class SquadronViewComponent {
   // Function to track items by their unique ID
   trackBySquadronId(index: number, squadron: Squadron): number | undefined {
     return squadron.squadronId;
+  }
+  // Handle squadron deletion
+  handleSquadronDeletion(squadronId: number): void {
+    this.squadrons = this.squadrons.filter(squadron => squadron.squadronId !== squadronId);
   }
 }

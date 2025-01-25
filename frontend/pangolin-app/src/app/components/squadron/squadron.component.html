@@ -12,4 +12,5 @@
     </h3>
     <button (click)="toggleEditMode()" class="button">{{ editMode ? 'Cancel' : 'Edit' }}</button>
     <button *ngIf="editMode" (click)="submitChanges()" class="button">Submit</button>
+    <button (click)="deleteSquad()" class="button">Delete</button>
 </div>
