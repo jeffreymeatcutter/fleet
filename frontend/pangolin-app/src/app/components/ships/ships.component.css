@@ -1,0 +1,11 @@
+.ship{
+    margin-top: 20px;
+    background-color: peachpuff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}
