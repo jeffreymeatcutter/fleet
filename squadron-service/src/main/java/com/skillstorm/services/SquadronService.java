@@ -55,11 +55,13 @@ public class SquadronService {
 			
 			Squadron squadron = repo.findById(id).get();
 			
+			//checking if max capacity is changed 
+			//(if so it needs to confirm what the current capacity is so it's not updating to below that threshold)
 			if(squadron.getMaxCapacity() != squadronDTO.getMaxCapacity()) {
 				
 				Personnel[] people = personnelClient.getPersonnel(id);
 				
-				if(squadronDTO.getMaxCapacity()< people.length || squadronDTO.getMaxCapacity()<0) {
+				if(squadronDTO.getMaxCapacity() < people.length || squadronDTO.getMaxCapacity()<0) {
 					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 				}
 			}
@@ -82,17 +84,18 @@ public class SquadronService {
         		person.setSquadronId(1);
         		personnelClient.changePersonnel(person.getPersonnelId(), person);
         	}
+        	
         
-        //Deleting the ships in the Squad
-		
+        //Deleting the ships in the Squad the same way
 		Iterable<Ship> ships = shipFeignClient.getShipsBySquadron(id);
 		  
 		for(Ship ship : ships) { 
 			ship.setSquadronId(1);
 			shipFeignClient.update(ship.getShipId(), ship); 
 			}
+		
 		 
-        
+        //running delete as normal once dependencies are cleared
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT)
 				             .body(null);
