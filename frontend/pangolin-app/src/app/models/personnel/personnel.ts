@@ -1,5 +1,12 @@
 import { deserialize } from '../utils/deserialize';
 
+export interface ApiPersonnelModel {
+  personnelId: number;
+  personnelName: string;
+  commander: boolean;
+  squadronId: number;
+}
+
 export class Personnel {
   public personnelId: number;
   public personnelName: string;
@@ -28,10 +35,4 @@ export class Personnel {
   static fromApiData(data: ApiPersonnelModel): Personnel {
     return deserialize(Personnel, data);
   }
-}
-export interface ApiPersonnelModel {
-  personnelId: number;
-  personnelName: string;
-  commander: boolean;
-  squadronId: number;
 }
