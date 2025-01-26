@@ -1,9 +1,11 @@
-<div
-      id="card"
-      *ngFor="let person of personnel; trackBy: trackByPersonId"
-    >
-      <app-personnel
-        *ngIf="personnel"
-        [person]="person"
-      ></app-personnel>
-    </div>
+<div>
+  <button (click)="goToAddPersonnel()" class="button">Add Personnel</button>
+</div>
+<div *ngFor="let person of personnel; trackBy: trackByPersonId">
+  <app-personnel
+    *ngIf="personnel"
+    [person]="person"
+    (personDeleted)="handlePersonDeletion($event)"
+    (personUpdated)="handlePersonnelUpdate($event)"
+  ></app-personnel>
+</div>
