@@ -1,0 +1,40 @@
+<div class="personnel-add-container">
+  <h2>Add New Personnel</h2>
+  <form (ngSubmit)="createPersonnel()" *ngIf="personToCreate" #personForm="ngForm">
+    <!-- Personnel Name Input -->
+    <div class="form-group">
+      <label for="personnelName">Personnel Name:</label>
+      <input
+        type="text"
+        id="personnelName"
+        [(ngModel)]="personToCreate.personnelName"
+        name="personnelName"
+        required
+        placeholder="Enter personnel name"
+        class="form-control"
+      />
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </div>
+
+    <!-- Role Input -->
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <select
+        [(ngModel)]="personToCreate.commander"
+        name="role"
+        id="role"
+        class="form-control"
+      >
+        <option [value]="true">Commander</option>
+        <option [value]="false">Pilot</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="button" [disabled]="!personForm.valid">
+      Add Personnel
+    </button>
+  </form>
+</div>

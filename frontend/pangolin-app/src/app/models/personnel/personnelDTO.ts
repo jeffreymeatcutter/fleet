@@ -1,11 +1,11 @@
 export class PersonnelDTO {
   public personnelName: string;
-  public isCommander: boolean;
+  public commander: boolean;
   public squadronId: number;
 
-  constructor(personnelName: string, isCommander: boolean, squadronId: number) {
+  constructor(personnelName: string, commander: boolean, squadronId: number) {
     this.personnelName = personnelName;
-    this.isCommander = isCommander;
+    this.commander = commander;
     this.squadronId = squadronId;
   }
 }
