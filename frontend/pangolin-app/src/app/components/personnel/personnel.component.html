@@ -24,12 +24,14 @@
     }}</span>
   </h3>
 
-  <button (click)="toggleEditMode()" class="button">
-    {{ editMode ? "Cancel" : "Edit" }}
-  </button>
-  <button *ngIf="editMode" (click)="submitChanges()" class="button">
-    Submit
-  </button>
-  <button (click)="deletePersonnel()" class="button">Delete</button>
+  <div class="buttons">
+    <button (click)="toggleEditMode()" class="button">
+      {{ editMode ? "Cancel" : "Edit" }}
+    </button>
+    <button *ngIf="editMode" (click)="submitChanges()" class="button">
+      Submit
+    </button>
+    <button (click)="deletePersonnel()" class="button">Delete</button>
+  </div>
 </div>
 

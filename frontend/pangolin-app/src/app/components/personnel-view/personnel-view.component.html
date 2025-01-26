@@ -1,7 +1,6 @@
 
 <div class="container">
-  <h1 class="personnel">Personnel</h1>
-  <div>
+  <div class="addPersonnel">
     <button (click)="goToAddPersonnel()" class="button">Add Personnel</button>
   </div>
   <div id="card" *ngFor="let person of personnel; trackBy: trackByPersonId">

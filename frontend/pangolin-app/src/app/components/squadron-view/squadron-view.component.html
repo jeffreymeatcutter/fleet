@@ -1,11 +1,11 @@
 <div class="centering">
   <div class="container">
-    <h1 class="squadron">Squadron</h1>
-    <div>
-  <button (click)="goToAddSquadron()" class="button">
-    Add Squadron
-  </button>
-</div>
+    
+  <div class="addSquad">
+    <button (click)="goToAddSquadron()" class="button">
+      Add Squadron
+    </button>
+  </div>
 <div *ngFor="let squadron of squadrons; trackBy: trackBySquadronId">
   <app-squadron
     [squadron]="squadron"

@@ -10,6 +10,27 @@
     color: rgb(212, 79, 132);
     text-shadow: 2px 2px 4px rgb(171, 121, 171);
 }
+.button{
+    align-items: center;
+    height: 70px;
+    width: 180px;
+    border-radius: 10px;
+    background-color: #b74d77;
+    box-shadow: rgba(0, 0, 0, 0.4) 3px 4px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0);
+    border-style: none;
+    transition: background-color 0.3s;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.addSquad{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
 .card{
     margin: 4px 10px;
 }
