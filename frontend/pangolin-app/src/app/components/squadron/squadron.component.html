@@ -1,19 +1,32 @@
 
 <div *ngIf="squadron" class="squad">
-    <h3>Squad Name: 
-        <input *ngIf="editMode" [(ngModel)]="squadron.squadronName" placeholder="Enter squad name" />
-        <span *ngIf="!editMode">{{ squadron.squadronName }}</span>
-    </h3>
-    <h3>Squadron Id: 
-        <span>{{ squadron.squadronId }}</span>
-    </h3>
-    <h3>Squadron Max Capacity: 
-        <input *ngIf="editMode" [(ngModel)]="squadron.maxCapacity" placeholder="Enter max capacity" />
-        <span *ngIf="!editMode">{{ squadron.maxCapacity }}</span>
-    </h3>
-    <div class="buttons">
-        <button (click)="toggleEditMode()" class="button">{{ editMode ? 'Cancel' : 'Edit' }}</button>
-        <button *ngIf="editMode" (click)="submitChanges()" class="button">Submit</button>
-        <button (click)="deleteSquad()" class="button">Delete</button>
-    </div>
+  <h3>
+    Squad Name:
+    <input
+      *ngIf="editMode"
+      [(ngModel)]="squadron.squadronName"
+      placeholder="Enter squad name"
+    />
+    <span *ngIf="!editMode">{{ squadron.squadronName }}</span>
+  </h3>
+  <h3>
+    Squadron Id:
+    <span>{{ squadron.squadronId }}</span>
+  </h3>
+  <h3>
+    Squadron Max Capacity:
+    <input
+      *ngIf="editMode"
+      [(ngModel)]="squadron.maxCapacity"
+      placeholder="Enter max capacity"
+    />
+    <span *ngIf="!editMode">{{ squadron.maxCapacity }}</span>
+  </h3>
+  <button (click)="toggleEditMode()" class="button">
+    {{ editMode ? "Cancel" : "Edit" }}
+  </button>
+  <button *ngIf="editMode" (click)="submitChanges()" class="button">
+    Submit
+  </button>
+  <button (click)="deleteSquad()" class="button">Delete</button>
 </div>
