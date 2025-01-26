@@ -3,6 +3,7 @@ import { Squadron } from '../../models/squadron/squadron';
 import { SquadronService } from '../../services/squadron.service';
 import { CommonModule } from '@angular/common';
 import { SquadronComponent } from '../squadron/squadron.component';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -14,7 +15,7 @@ import { SquadronComponent } from '../squadron/squadron.component';
 export class SquadronViewComponent {
   squadrons: Squadron[] = [];
 
-  constructor(private squadronService: SquadronService) {}
+  constructor(private squadronService: SquadronService, private router: Router) {}
 
   ngOnInit() {
     //Populate squadrons on init
@@ -32,5 +33,9 @@ export class SquadronViewComponent {
   // Handle squadron deletion
   handleSquadronDeletion(squadronId: number): void {
     this.squadrons = this.squadrons.filter(squadron => squadron.squadronId !== squadronId);
+  }
+   // Navigate to the add-squadron route
+   goToAddSquadron(): void {
+    this.router.navigate(['/add-squadron']);
   }
 }
