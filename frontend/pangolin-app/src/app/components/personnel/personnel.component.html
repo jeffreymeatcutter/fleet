@@ -1,6 +1,6 @@
 <div *ngIf="person" class="person">
-    <h3>Id: {{ person.personnelId }}</h3>
-    <h3>Personnel Name: {{ person.personnelName }}</h3>
-    <h3>Squadron Name: {{ squadName }}</h3>
-    <h3>Role: {{ person.commander === true ? 'Commander' : 'Pilot' }}</h3>
+    <h3 class="id">Id: {{ person.personnelId }}</h3>
+    <h3 class="personnel">Personnel Name: {{ person.personnelName }}</h3>
+    <h3 class="squadron">Squadron Name: {{ squadName }}</h3>
+    <h3 class="role">Role: {{ person.commander === true ? 'Commander' : 'Pilot' }}</h3>
 </div>

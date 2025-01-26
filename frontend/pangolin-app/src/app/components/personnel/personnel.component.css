@@ -1,11 +1,27 @@
 .person{
     margin-top: 20px;
-    background-color: pink;
+    background-color: rgba(13, 19, 33, 0.5);
     border-radius: 4px;
-    display: flex;
+    display: block;
     justify-content: space-evenly;
     width: 80%;
-    border-color: black;
-    border-width: 2px;
-    border-style: solid;
+    width: 270px;
+    height: 200px;
+    padding: 8px;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(53, 52, 52);
+    box-shadow: rgba(183, 77, 119, .7) 3px 4px;
+    
+}
+.id{
+    grid-area: id;
+}
+.personnel{
+    grid-area: personnel;
+}
+.sqadron{
+    grid-area: squadron;
+}
+.role{
+    grid-area: role;
 }

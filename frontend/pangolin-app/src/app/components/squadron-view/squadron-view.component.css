@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.squadron{
+    width: 100%;
+    text-align: center;
+    color: rgb(212, 79, 132);
+    text-shadow: 2px 2px 4px rgb(171, 121, 171);
+}
+.card{
+    margin: 4px 10px;
+}

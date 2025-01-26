@@ -1,9 +1,12 @@
-<div
-      id="card"
-      *ngFor="let ship of ships; trackBy: trackByShipId"
-    >
-      <app-ships
-        *ngIf="ships"
-        [ship]="ship"
-      ></app-ships>
-    </div>
+<div class="container">
+    <h1 class="ship">Ships</h1>
+  <div
+        id="card"
+        *ngFor="let ship of ships; trackBy: trackByShipId"
+      >
+        <app-ships
+          *ngIf="ships"
+          [ship]="ship"
+        ></app-ships>
+      </div>
+  </div>
