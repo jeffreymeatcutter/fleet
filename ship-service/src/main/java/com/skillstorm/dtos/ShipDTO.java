@@ -8,7 +8,7 @@ public class ShipDTO {
 
     private String shipName; 
     
-    @Pattern (regexp = "battleship|carrier|destroyer|submarine", message = "Invalid ship type")
+    @Pattern (regexp = "battleship|carrier|destroyer|cruiser|frigate", message = "Invalid ship type")
     private String shipType;
     
     private int squadronId;

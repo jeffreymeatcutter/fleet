@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Squadron } from '../../models/squadron/squadron';
+import { Squadron } from '../../../models/squadron/squadron';
 import { MatCardModule } from '@angular/material/card'
 import { NgIf } from '@angular/common';
-import { SquadronService } from '../../services/squadron.service';
+import { SquadronService } from '../../../services/squadron.service';
 import { FormsModule } from '@angular/forms';
-import { SquadronDTO } from '../../models/squadron/squadronDTO';
+import { SquadronDTO } from '../../../models/squadron/squadronDTO';
 
 @Component({
   selector: 'app-squadron',

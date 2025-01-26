@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SquadronService } from '../../services/squadron.service';
-import { SquadronDTO } from '../../models/squadron/squadronDTO';
+import { SquadronService } from '../../../services/squadron.service';
+import { SquadronDTO } from '../../../models/squadron/squadronDTO';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 

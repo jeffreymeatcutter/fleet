@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Personnel } from '../../models/personnel/personnel';
-import { PersonnelService } from '../../services/personnel.service';
+import { Personnel } from '../../../models/personnel/personnel';
+import { PersonnelService } from '../../../services/personnel.service';
 import { CommonModule } from '@angular/common';
-import { PersonnelComponent } from '../personnel/personnel.component';
 import { Router } from '@angular/router';
+import { PersonnelComponent } from '../personnel/personnel.component';
 
 @Component({
   selector: 'app-personnel-view',

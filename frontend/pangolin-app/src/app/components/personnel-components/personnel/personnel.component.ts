@@ -1,10 +1,10 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Personnel } from '../../models/personnel/personnel';
-import { SquadronService } from '../../services/squadron.service';
+import { Personnel } from '../../../models/personnel/personnel';
+import { SquadronService } from '../../../services/squadron.service';
 import { FormsModule } from '@angular/forms';
-import { PersonnelService } from '../../services/personnel.service';
-import { PersonnelDTO } from '../../models/personnel/personnelDTO';
+import { PersonnelService } from '../../../services/personnel.service';
+import { PersonnelDTO } from '../../../models/personnel/personnelDTO';
 
 @Component({
   selector: 'app-personnel',

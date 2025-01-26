@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PersonnelDTO } from '../../models/personnel/personnelDTO';
-import { PersonnelService } from '../../services/personnel.service';
+import { PersonnelDTO } from '../../../models/personnel/personnelDTO';
+import { PersonnelService } from '../../../services/personnel.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 

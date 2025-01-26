@@ -6,7 +6,6 @@ export class ShipsDTO {
     public squadronId: number;
 
     constructor(
-        shipId: number,
         shipName: string,
         shipType: ShipType,
         squadronId: number

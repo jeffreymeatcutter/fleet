@@ -1,0 +1,30 @@
+<div *ngIf="ship" class="ship">
+    <h3>Id: {{ ship.shipId }}</h3>
+  
+    <h3>
+      Ship Name:
+      <input
+        *ngIf="editMode"
+        [(ngModel)]="ship.shipName"
+        placeholder="Enter ship name"
+      />
+      <span *ngIf="!editMode">{{ ship.shipName }}</span>
+    </h3>
+  
+    <h3>Ship Type:</h3>
+    <select *ngIf="editMode" [(ngModel)]="ship.shipType">
+      <option *ngFor="let type of shipTypes" [value]="type">{{ type | titlecase }}</option>
+    </select>
+    <span *ngIf="!editMode">{{ ship.shipType | titlecase }}</span>
+  
+    <h3>Squadron Name: {{ squadName }}</h3>
+  
+    <button (click)="toggleEditMode()" class="button">
+      {{ editMode ? 'Cancel' : 'Edit' }}
+    </button>
+    <button *ngIf="editMode" (click)="submitChanges()" class="button">
+      Submit
+    </button>
+    <button (click)="deleteShip()" class="button">Delete</button>
+  </div>
+  

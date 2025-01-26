@@ -1,0 +1,35 @@
+<div>
+    <h3>Add Ship</h3>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    
+    <form (ngSubmit)="createShip()">
+      <div>
+        <label for="shipName">Ship Name:</label>
+        <input
+          id="shipName"
+          type="text"
+          [(ngModel)]="shipToCreate.shipName"
+          name="shipName"
+          required
+          placeholder="Enter ship name"
+        />
+      </div>
+  
+      <div>
+        <label for="shipType">Ship Type:</label>
+        <select
+          id="shipType"
+          [(ngModel)]="shipToCreate.shipType"
+          name="shipType"
+          required
+        >
+          <option *ngFor="let type of shipTypes" [value]="type">
+            {{ type | titlecase }}
+          </option>
+        </select>
+      </div>
+  
+      <button type="submit">Create Ship</button>
+    </form>
+  </div>
+  
