@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { SquadronService } from '../../../services/squadron.service';
 import { FormsModule } from '@angular/forms';
 import { SquadronDTO } from '../../../models/squadron/squadronDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-squadron',
@@ -14,8 +15,13 @@ import { SquadronDTO } from '../../../models/squadron/squadronDTO';
   standalone: true
 })
 export class SquadronComponent {
-  constructor(private squadronService: SquadronService) {}
-
+  constructor(private squadronService: SquadronService, private router: Router) {
+    // Update the current route whenever it changes
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.router.url; // Get the current URL
+    });
+  }
+  currentRoute: string = '';
   @Input() squadron: Squadron| null = null;
   @Output() squadronDeleted = new EventEmitter<number>();
   bufferSquadron: Squadron| null = null;
@@ -52,6 +58,13 @@ export class SquadronComponent {
           alert('Error deleting squadron');
         }
       )
+    }
+  }
+
+  // Navigate to the manage-squadron route
+  goToManageSquadron(): void {
+    if (this.squadron?.squadronId) {
+      this.router.navigate(['/manage-squadron', this.squadron.squadronId]);
     }
   }
 }

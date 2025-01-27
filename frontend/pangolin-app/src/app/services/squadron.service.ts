@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Squadron } from '../models/squadron/squadron';
 import { SquadronDTO } from '../models/squadron/squadronDTO';
+import { Ships } from '../models/ships/ships';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,9 @@ export class SquadronService {
 
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  findShipsBySquadronId(id: number): Observable<Ships[]> {
+    return this.http.get<Ships[]>(`${this.apiUrl}/ships/${id}`)
   }
 }
