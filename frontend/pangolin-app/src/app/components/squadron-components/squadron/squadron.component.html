@@ -21,11 +21,13 @@
     />
     <span *ngIf="!editMode">{{ squadron.maxCapacity }}</span>
   </h3>
-  <button (click)="toggleEditMode()" class="button">
-    {{ editMode ? "Cancel" : "Edit" }}
-  </button>
-  <button *ngIf="editMode" (click)="submitChanges()" class="button">
-    Submit
-  </button>
-  <button (click)="deleteSquad()" class="button">Delete</button>
+  <div class="buttons">
+    <button (click)="toggleEditMode()" class="button">
+      {{ editMode ? "Cancel" : "Edit" }}
+    </button>
+    <button *ngIf="editMode" (click)="submitChanges()" class="button">
+      Submit
+    </button>
+    <button (click)="deleteSquad()" class="button">Delete</button>
+  </div>
 </div>

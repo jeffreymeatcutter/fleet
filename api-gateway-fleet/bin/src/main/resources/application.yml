@@ -1,0 +1,27 @@
+spring:
+ main:
+  web-application-type: reactive
+ application:
+  name: gateway
+ cloud:
+  gateway:
+   routes:
+   - id: ship-service-route
+     uri: lb://ship-service
+     predicates:
+     - Path=/ships/**
+   - id: personnel-service-route
+     uri: lb://personnel-service
+     predicates:
+     - Path=/personnel/**
+   - id: squadron-service-route
+     uri: lb://squadron-service
+     predicates:
+     - Path=/squadron/**
+server:
+ port: 8667
+
+eureka:
+ client:
+  service-url:
+   defaultZone: http://localhost:8761/eureka

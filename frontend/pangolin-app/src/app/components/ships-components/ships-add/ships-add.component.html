@@ -1,9 +1,10 @@
-<div>
-    <h3>Add Ship</h3>
+<div class="centering">
+  <div class="ship-add-container">
+    <h2>Add Ship</h2>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
     
     <form (ngSubmit)="createShip()">
-      <div>
+      <div class="form-group">
         <label for="shipName">Ship Name:</label>
         <input
           id="shipName"
@@ -15,7 +16,7 @@
         />
       </div>
   
-      <div>
+      <div class="form-group">
         <label for="shipType">Ship Type:</label>
         <select
           id="shipType"
@@ -32,4 +33,5 @@
       <button type="submit">Create Ship</button>
     </form>
   </div>
+</div>
   

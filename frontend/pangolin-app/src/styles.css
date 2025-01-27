@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    overflow-y: scroll;
-    height: 100%;
-    background-image: url("../../styling-pics/ross-parmly-rf6ywHVkrlY-unsplash.jpg");
-    background-size: 1700px;
-    background-color: #002758;
+  overflow-y: scroll;
+  height: 100%;
   }
   html{
     height: 100%;
+    background-image: url("../../styling-pics/ross-parmly-rf6ywHVkrlY-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
   }
