@@ -1,12 +1,14 @@
-<div>
-  <button (click)="goToAddShip()" class="button">Add Ship</button>
-</div>
+<div class="container">
+  <div class="addShip">
+    <button (click)="goToAddShip()" class="button">Add Ship</button>
+  </div>
 
-<div *ngFor="let ship of ships; trackBy: trackByShipId">
-  <app-ships
-    *ngIf="ship"
-    [ship]="ship"
-    (shipDeleted)="handleShipDeletion($event)"
-    (shipUpdated)="handleShipUpdate($event)"
-  ></app-ships>
+  <div *ngFor="let ship of ships; trackBy: trackByShipId">
+    <app-ships
+      *ngIf="ship"
+      [ship]="ship"
+      (shipDeleted)="handleShipDeletion($event)"
+      (shipUpdated)="handleShipUpdate($event)"
+    ></app-ships>
+  </div>
 </div>
