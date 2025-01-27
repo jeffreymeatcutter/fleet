@@ -30,4 +30,7 @@ export class PersonnelService {
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+  findPersonnelBySquadronId(id: number): Observable<Personnel[]> {
+      return this.http.get<Personnel[]>(`${this.apiUrl}/squadron/${id}`)
+    }
 }

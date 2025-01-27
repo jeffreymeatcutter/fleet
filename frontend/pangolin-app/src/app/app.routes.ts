@@ -18,7 +18,7 @@ export const routes: Routes = [
     component: SquadronAddComponent
   },
   {
-    path: 'manage-squadron',
+    path: 'manage-squadron/:squadronId',
     component: SquadronManageComponent
   },
   {
