@@ -63,6 +63,8 @@ export class SquadronComponent {
 
   // Navigate to the manage-squadron route
   goToManageSquadron(): void {
-    this.router.navigate(['/manage-squadron']);
+    if (this.squadron?.squadronId) {
+      this.router.navigate(['/manage-squadron', this.squadron.squadronId]);
+    }
   }
 }
