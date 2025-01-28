@@ -1,14 +1,9 @@
 package com.skillstorm.services;
-
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpEntity;
+ 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-import com.skillstorm.FeignClient.SquadronFeignClient;
+import org.springframework.stereotype.Service; 
+ 
 import com.skillstorm.dtos.ShipDTO;
 import com.skillstorm.models.Ship;
 import com.skillstorm.repositories.ShipRepository;
@@ -22,12 +17,7 @@ public class ShipService {
     public ShipService(ShipRepository repo) {
         this.repo = repo; 
     }
-
-    //get ships by squadron
-    public Iterable<Ship> findBySquadronId(int squadronId) {
-        return repo.findBySquadronId(squadronId);
-    }
-    
+ 
     // Find all 
     public ResponseEntity<Iterable<Ship>> findAll() { 
         return ResponseEntity.status(HttpStatus.OK)
