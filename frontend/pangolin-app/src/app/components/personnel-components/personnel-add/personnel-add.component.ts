@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { PersonnelDTO } from '../../../models/personnel/personnelDTO';
 import { PersonnelService } from '../../../services/personnel.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-personnel-add',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './personnel-add.component.html',
   styleUrl: './personnel-add.component.css'
 })

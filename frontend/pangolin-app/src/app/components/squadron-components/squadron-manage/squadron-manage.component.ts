@@ -9,11 +9,11 @@ import { ShipsService } from '../../../services/ships.service';
 import { ShipsComponent } from '../../ships-components/ships/ships.component';
 import { SquadronComponent } from '../squadron/squadron.component';
 import { PersonnelComponent } from '../../personnel-components/personnel/personnel.component';
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-squadron-manage',
-  imports: [ShipsComponent, SquadronComponent, PersonnelComponent, CommonModule],
+  imports: [ShipsComponent, SquadronComponent, PersonnelComponent, NgForOf, NgIf],
   templateUrl: './squadron-manage.component.html',
   styleUrl: './squadron-manage.component.css',
   standalone: true,

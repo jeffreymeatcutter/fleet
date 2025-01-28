@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Squadron } from '../../../models/squadron/squadron';
 import { SquadronService } from '../../../services/squadron.service';
-import { CommonModule } from '@angular/common';
+import { NgForOf } from '@angular/common';
 import { SquadronComponent } from '../squadron/squadron.component';
 import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-squadron-view',
-  imports: [CommonModule, SquadronComponent],
+  imports: [NgForOf, SquadronComponent],
   templateUrl: './squadron-view.component.html',
   styleUrl: './squadron-view.component.css',
 })

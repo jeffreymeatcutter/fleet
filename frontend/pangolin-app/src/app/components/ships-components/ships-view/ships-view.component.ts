@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Ships } from '../../../models/ships/ships';
 import { ShipsService } from '../../../services/ships.service';
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { ShipsComponent } from '../ships/ships.component';
 
 @Component({
   selector: 'app-ships-view',
-  imports: [CommonModule, ShipsComponent],
+  imports: [NgForOf, NgIf, ShipsComponent],
   templateUrl: './ships-view.component.html',
   styleUrl: './ships-view.component.css',
   standalone: true

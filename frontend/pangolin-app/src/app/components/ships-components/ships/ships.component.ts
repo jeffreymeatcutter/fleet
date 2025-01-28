@@ -1,4 +1,4 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ShipType, Ships } from '../../../models/ships/ships';
 import { SquadronService } from '../../../services/squadron.service';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ships',
-  imports: [FormsModule, NgIf, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './ships.component.html',
   styleUrls: ['./ships.component.css'],
   standalone: true

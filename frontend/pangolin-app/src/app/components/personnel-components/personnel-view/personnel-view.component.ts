@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Personnel } from '../../../models/personnel/personnel';
 import { PersonnelService } from '../../../services/personnel.service';
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { PersonnelComponent } from '../personnel/personnel.component';
 
 @Component({
   selector: 'app-personnel-view',
-  imports: [CommonModule, PersonnelComponent],
+  imports: [NgForOf, NgIf, PersonnelComponent],
   templateUrl: './personnel-view.component.html',
   styleUrl: './personnel-view.component.css',
   standalone: true

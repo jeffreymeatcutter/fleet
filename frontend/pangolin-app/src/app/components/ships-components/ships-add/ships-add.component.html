@@ -3,7 +3,7 @@
     <h2>Add Ship</h2>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
     
-    <form (ngSubmit)="createShip()">
+    <form (ngSubmit)="createShip()" #shipForm="ngForm">
       <div class="form-group">
         <label for="shipName">Ship Name:</label>
         <input
@@ -30,7 +30,7 @@
         </select>
       </div>
   
-      <button type="submit">Create Ship</button>
+      <button type="submit" [disabled]="!shipForm.valid">Create Ship</button>
     </form>
   </div>
 </div>
