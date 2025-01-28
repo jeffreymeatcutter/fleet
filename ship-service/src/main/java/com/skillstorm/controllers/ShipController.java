@@ -19,6 +19,13 @@ public class ShipController {
         this.service = service;
     } 
     
+    //find ships by squadId
+    @GetMapping("/squadron/{squadronId}")
+    public ResponseEntity<Iterable<Ship>> getShipsBySquadron(@PathVariable int squadronId) {
+    	Iterable<Ship> ships = service.findBySquadronId(squadronId); 
+        return ResponseEntity.ok(ships); 
+    }
+    
     // Find all 
     @GetMapping
     public ResponseEntity<Iterable<Ship>> findAll() {

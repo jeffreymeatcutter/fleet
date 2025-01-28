@@ -17,6 +17,11 @@ public class ShipService {
     public ShipService(ShipRepository repo) {
         this.repo = repo; 
     }
+    
+    //get ships by squadron
+    public Iterable<Ship> findBySquadronId(int squadronId) {
+        return repo.findBySquadronId(squadronId);
+    }
  
     // Find all 
     public ResponseEntity<Iterable<Ship>> findAll() { 
