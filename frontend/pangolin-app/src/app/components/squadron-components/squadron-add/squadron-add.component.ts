@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { SquadronService } from '../../../services/squadron.service';
 import { SquadronDTO } from '../../../models/squadron/squadronDTO';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-squadron-add',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './squadron-add.component.html',
   styleUrl: './squadron-add.component.css',
   standalone: true

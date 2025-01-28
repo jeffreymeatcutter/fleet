@@ -22,15 +22,15 @@
     <span *ngIf="!editMode">{{ squadron.maxCapacity }}</span>
   </h3>
 <div class="buttons">
-  <button  *ngIf="currentRoute !=='/manage-squadron'" (click)="toggleEditMode()" class="button">
+  <button *ngIf="squadron.squadronId !== 1" (click)="toggleEditMode()" class="button">
     {{ editMode ? "Cancel" : "Edit" }}
   </button>
-  <button *ngIf="editMode && currentRoute !== '/manage-squadron'" (click)="submitChanges()" class="button">
+  <button *ngIf="editMode" (click)="submitChanges()" class="button">
     Submit
   </button>
-  <button *ngIf="!editMode && currentRoute !== '/manage-squadron'" (click)="goToManageSquadron()" class="button">
+  <button *ngIf="!editMode && squadron.squadronId !== 1" (click)="goToManageSquadron()" class="button">
     Manage
   </button>
-  <button *ngIf="currentRoute !=='/manage-squadron'" (click)="deleteSquad()" class="button">Delete</button>
+  <button *ngIf="squadron.squadronId !== 1" (click)="deleteSquad()" class="button">Delete</button>
 </div>
 </div>
