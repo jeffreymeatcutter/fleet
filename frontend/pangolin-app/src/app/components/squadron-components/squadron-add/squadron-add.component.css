@@ -1,36 +1,98 @@
 .squadron-add-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  height: 350px;
+  width: 500px;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
   }
+.centering{
+  width: 100vw;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+input{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 0;
+}
   
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+input{
+  width: 10px;
+}
+#name, #maxCapacity{
+  width: 160px;
+  margin-left: 10px;
+}
+.form-group > label{
+  margin-top: 11px;
+}
   
-  .form-group {
-    margin-bottom: 15px;
-  }
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
   
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
   
-  input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+button {
+  align-items: center;
+  margin: 5px 90px;
+  height: 50px;
+  width: 140px;
+  border-radius: 10px;
+  background-color: #b74d77;
+  box-shadow: rgba(0, 0, 0, 0.4) 3px 4px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0);
+  border-style: none;
+  transition: background-color 0.3s;
+  font-size: 18px;
+  font-weight: 200;
+  cursor: pointer;
+}
+button:disabled{
+  background-color: #7d5966;
+}
+button:hover:disabled{
+  background-color: #7d5966;
+  transform: translateY(0px) translateX(0px);
+    box-shadow: rgba(0, 0, 0, 0.4) 3px 4px;
+    cursor: default;
+}
+button:hover{
+  cursor:pointer;
+  background-color: #a34369;
+  transform: translateY(1px) translateX(1px);
+  box-shadow: rgba(0, 0, 0, 0.4) 2px 3px;
+}
+button:active{
+  background-color: #7f3452;
+  transform: translateY(3px) translateX(4px);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px;
+}

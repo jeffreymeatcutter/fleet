@@ -1,11 +1,15 @@
-<div>
-  <button (click)="goToAddSquadron()" class="button">
-    Add Squadron
-  </button>
-</div>
-<div *ngFor="let squadron of squadrons; trackBy: trackBySquadronId">
-  <app-squadron
-    [squadron]="squadron"
-    (squadronDeleted)="handleSquadronDeletion($event)"
-  ></app-squadron>
+<div class="centering">
+  <div class="container">
+    <div class="addSquad">
+      <button (click)="goToAddSquadron()" class="button">
+        Add Squadron
+      </button>
+    </div>
+    <div *ngFor="let squadron of squadrons; trackBy: trackBySquadronId">
+      <app-squadron
+        [squadron]="squadron"
+        (squadronDeleted)="handleSquadronDeletion($event)"
+      ></app-squadron>
+    </div>
+  </div>
 </div>

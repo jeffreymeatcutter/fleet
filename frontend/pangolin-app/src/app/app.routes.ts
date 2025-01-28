@@ -6,6 +6,7 @@ import { ShipsViewComponent } from './components/ships-components/ships-view/shi
 import { SquadronAddComponent } from './components/squadron-components/squadron-add/squadron-add.component';
 import { PersonnelAddComponent } from './components/personnel-components/personnel-add/personnel-add.component';
 import { ShipsAddComponent } from './components/ships-components/ships-add/ships-add.component';
+import { SquadronManageComponent } from './components/squadron-components/squadron-manage/squadron-manage.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'add-squadron',
     component: SquadronAddComponent
+  },
+  {
+    path: 'manage-squadron/:squadronId',
+    component: SquadronManageComponent
   },
   {
     path: 'squadronview',

@@ -1,45 +1,47 @@
-<div class="squadron-add-container">
-    <h2>Add New Squadron</h2>
-    <form (ngSubmit)="createSquadron()" *ngIf="squadToCreate" #squadForm="ngForm">
-      <!-- Name Input -->
-      <div class="form-group">
-        <label for="name">Squadron Name:</label>
-        <input 
-          type="text" 
-          id="name" 
-          [(ngModel)]="squadToCreate.squadronName" 
-          name="name" 
-          required 
-          placeholder="Enter squadron name" 
-          class="form-control" 
-        />
-      </div>
-  
-      <!-- Max Capacity Input -->
-      <div class="form-group">
-        <label for="maxCapacity">Max Capacity:</label>
-        <input 
-          type="number" 
-          id="maxCapacity" 
-          [(ngModel)]="squadToCreate.maxCapacity" 
-          name="maxCapacity" 
-          required 
-          min="1" 
-          class="form-control" 
-        />
-        <!-- Error Message -->
-        <div *ngIf="errorMessage" class="error-message">
-          {{ errorMessage }}
+<div class="centering">
+  <div class="squadron-add-container">
+      <h2>Add New Squadron</h2>
+      <form (ngSubmit)="createSquadron()" *ngIf="squadToCreate" #squadForm="ngForm">
+        <!-- Name Input -->
+        <div class="form-group">
+          <label for="name">Squadron Name:</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="squadToCreate.squadronName" 
+            name="name" 
+            required 
+            placeholder="Enter squadron name" 
+            class="form-control" 
+          />
         </div>
-      </div>
-  
-      <!-- Submit Button -->
-      <button 
-        type="submit" 
-        class="button" 
-        [disabled]="!squadForm.valid"
-      >
-        Add Squadron
-      </button>
-    </form>
+    
+        <!-- Max Capacity Input -->
+        <div class="form-group">
+          <label for="maxCapacity">Max Capacity:</label>
+          <input 
+            type="number" 
+            id="maxCapacity" 
+            [(ngModel)]="squadToCreate.maxCapacity" 
+            name="maxCapacity" 
+            required 
+            min="1" 
+            class="form-control" 
+          />
+          <!-- Error Message -->
+          <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+        </div>
+    
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="button" 
+          [disabled]="!squadForm.valid"
+        >
+          Add Squadron
+        </button>
+      </form>
   </div>  
+</div>
