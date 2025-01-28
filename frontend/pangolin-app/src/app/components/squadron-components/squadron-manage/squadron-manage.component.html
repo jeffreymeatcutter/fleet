@@ -1,60 +1,61 @@
-<div *ngIf="squadron">
-    <app-squadron [squadron]="squadron"></app-squadron>
+<div class="container">
+  <div class="squad-container" *ngIf="squadron">
+      <app-squadron [squadron]="squadron"></app-squadron>
   </div>
-  
-  <h3>Assigned Personnel</h3>
-<div *ngIf="assignedPersonnel.length > 0; else noAssignedPersonnel">
-  <div *ngFor="let person of assignedPersonnel">
-    <app-personnel
-      [person]="person"
-      (personUpdated)="fetchData()"
-      (personDeleted)="fetchData()"
-    ></app-personnel>
-    <button (click)="deassignPersonnel(person)">Unassign</button>
+    
+    <h3>Assigned Personnel</h3>
+  <div class="card-container" *ngIf="assignedPersonnel.length > 0; else noAssignedPersonnel">
+    <div *ngFor="let person of assignedPersonnel">
+      <app-personnel
+        [person]="person"
+        (personUpdated)="fetchData()"
+        (personDeleted)="fetchData()"
+      ></app-personnel>
+      <button (click)="deassignPersonnel(person)">Unassign</button>
+    </div>
   </div>
+  <ng-template #noAssignedPersonnel>
+    <p>No assigned personnel.</p>
+  </ng-template>
+    
+    <h3>Unassigned Personnel</h3>
+    <div class="card-container" *ngIf="unassignedPersonnel.length > 0; else noUnassignedPersonnel">
+      <div *ngFor="let person of unassignedPersonnel">
+        <app-personnel [person]="person"></app-personnel>
+        <button (click)="assignPersonnel(person.personnelId)">Assign</button>
+      </div>
+    </div>
+    <ng-template #noUnassignedPersonnel>
+      <p>No unassigned personnel.</p>
+    </ng-template>
+    
+    <h3>Assigned Ships</h3>
+    <div class="card-container" *ngIf="assignedShips.length > 0; else noAssignedShips">
+      <div *ngFor="let ship of assignedShips">
+        <app-ships
+          [ship]="ship"
+          (shipUpdated)="fetchData()"
+          (shipDeleted)="fetchData()"
+        ></app-ships>
+        <button (click)="deassignShip(ship)">Unassign</button>
+      </div>
+    </div>
+    <ng-template #noAssignedShips>
+      <p>No assigned ships.</p>
+    </ng-template>
+    
+    <h3>Unassigned Ships</h3>
+    <div class="card-container" *ngIf="unassignedShips.length > 0; else noUnassignedShips">
+      <div *ngFor="let ship of unassignedShips">
+        <app-ships [ship]="ship"></app-ships>
+        <button (click)="assignShip(ship.shipId)">Assign</button>
+      </div>
+    </div>
+    <ng-template #noUnassignedShips>
+      <p>No unassigned ships.</p>
+    </ng-template>
+    
+    <div *ngIf="errorMessage">
+      <p class="error">{{ errorMessage }}</p>
+    </div>
 </div>
-<ng-template #noAssignedPersonnel>
-  <p>No assigned personnel.</p>
-</ng-template>
-  
-  <h3>Unassigned Personnel</h3>
-  <div *ngIf="unassignedPersonnel.length > 0; else noUnassignedPersonnel">
-    <div *ngFor="let person of unassignedPersonnel">
-      <app-personnel [person]="person"></app-personnel>
-      <button (click)="assignPersonnel(person.personnelId)">Assign</button>
-    </div>
-  </div>
-  <ng-template #noUnassignedPersonnel>
-    <p>No unassigned personnel.</p>
-  </ng-template>
-  
-  <h3>Assigned Ships</h3>
-  <div *ngIf="assignedShips.length > 0; else noAssignedShips">
-    <div *ngFor="let ship of assignedShips">
-      <app-ships
-        [ship]="ship"
-        (shipUpdated)="fetchData()"
-        (shipDeleted)="fetchData()"
-      ></app-ships>
-      <button (click)="deassignShip(ship)">Unassign</button>
-    </div>
-  </div>
-  <ng-template #noAssignedShips>
-    <p>No assigned ships.</p>
-  </ng-template>
-  
-  <h3>Unassigned Ships</h3>
-  <div *ngIf="unassignedShips.length > 0; else noUnassignedShips">
-    <div *ngFor="let ship of unassignedShips">
-      <app-ships [ship]="ship"></app-ships>
-      <button (click)="assignShip(ship.shipId)">Assign</button>
-    </div>
-  </div>
-  <ng-template #noUnassignedShips>
-    <p>No unassigned ships.</p>
-  </ng-template>
-  
-  <div *ngIf="errorMessage">
-    <p class="error">{{ errorMessage }}</p>
-  </div>
-  

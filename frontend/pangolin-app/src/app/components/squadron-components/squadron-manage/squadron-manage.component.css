@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.squad-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 110px;
+    margin-top: ;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+h3{
+    width: 100%;
+    text-align: center;
+    border-bottom: solid 2px black;
+    padding-bottom: 10px;
+    border-top: solid 2px black;
+    padding-top: 10px;
+}
+button{
+    margin-top: 20px;
+    margin-left: 100px;
+}
+button {
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 100px;
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: #b74d77;
+    box-shadow: rgba(0, 0, 0, 0.6) 3px 4px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0);
+    border-style: none;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: 200;
+    cursor: pointer;
+  }
+  button:hover{
+    cursor:pointer;
+    background-color: #a34369;
+    transform: translateY(1px) translateX(1px);
+    box-shadow: rgba(0, 0, 0, 0.6) 2px 3px;
+  }
+  button:active{
+    background-color: #7f3452;
+    transform: translateY(3px) translateX(4px);
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px;
+  }
