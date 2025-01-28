@@ -1,9 +1,7 @@
 package com.skillstorm.dtos;
 
 import jakarta.validation.constraints.Pattern;
-
-
-
+ 
 public class ShipDTO {
 
     private String shipName; 
