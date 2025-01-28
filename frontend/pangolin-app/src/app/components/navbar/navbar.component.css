@@ -1,13 +1,21 @@
 .navbar {
   background-color: #333;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 40px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  margin: 0;
+  border-bottom: solid 2px #b74d77;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 100px;
+
 }
 
 .navbar-brand {
@@ -15,6 +23,7 @@
   font-weight: bold;
   color: white;
   text-decoration: none;
+  text-shadow: 2px 2px 4px rgba(172, 78, 115, 0.8);
 }
 
 .navbar-nav {
@@ -31,6 +40,7 @@
   color: white;
   text-decoration: none;
   font-size: 18px;
+  text-shadow: 2px 2px 4px rgba(172, 78, 115, 0.8);
 }
 
 .nav-link:hover {
